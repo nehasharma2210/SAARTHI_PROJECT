@@ -1,0 +1,73 @@
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/attendance.css">
+ </head>
+ <body>
+    <div class="stars" id="stars"></div>
+
+    <!-- Header -->
+    <header style="display: none;">
+        <div class="logo" >
+            <h1>SAARTHI</h1>
+        </div>
+        <div class="header-controls">
+            <button class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                <i id="themeIcon" class="fas fa-moon"></i>
+            </button>
+            <button class="font-size-toggle" id="fontSizeToggle" title="Toggle Font Size">
+                <i class="fas fa-text-height"></i>
+            </button>
+             <a href="{% url 'home' %}"  style=" text-decoration: none !important; color: inherit !important">
+            <button class="btn btn-primary" id="backBtn">               
+                <i class="fas fa-arrow-left"></i> Back
+            </button></a>
+        </div>
+    </header>
+
+    <div class="modal" id="loginModal">
+       
+        <div class="modal-content">
+             <form  method="POST">
+                    {% csrf_token %}
+            <div class="modal-header">
+                <h3>Welcome</h3>
+                <a href="{% url 'home' %}" class="close-btn" id="closeLogin" style=" text-decoration: none !important; color: inherit !important">×</a>
+            </div>
+            <div class="modal-body">
+                
+                    <div class="modal-field">
+                        <label for="email">Email</label>
+                        <input type="text" id=" text" required name="name">
+                    </div>
+                    <div class="modal-field">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required name="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login <i class="fas fa-sign-in-alt"></i></button>
+                
+            </div>
+              </form>
+              {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+                    </div>
+      
+    </div>
+    <script src="/static/js/base.js"></script>
+    <script>
+        let isDarkTheme = localStorage.getItem('theme') === 'light' ? false : true;
+    </script>
+
+
+ </body>
+ </html>
+<!-- Login Modal -->
+ 

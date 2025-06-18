@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAARTHI - To-Do List Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet"  href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/planner.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1>SAARTHI</h1>
+        </div>
+        <div class="header-controls">
+            <button class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                <i id="themeIcon" class="fas fa-moon"></i>
+            </button>
+            <button class="font-size-toggle" id="fontSizeToggle" title="Toggle Font Size">
+                <i class="fas fa-text-height"></i>
+            </button>
+             <a href="{% url 'home' %}"  style=" text-decoration: none !important; color: inherit !important">
+            <button class="btn btn-primary" id="backBtn">             
+                <i class="fas fa-arrow-left"></i> Back
+            </button></a>
+        </div>
+    </header>
+
+    <!-- To-Do Section -->
+    <section class="section">
+        <div class="section-title">
+            <h2>To-Do List Manager</h2>
+            <p>Plan karo, kaam pura karo!</p>
+        </div>
+        <div class="todo-container">
+            <div class="logo"><h1 style="margin: 2px;">All Todo  LIST</h1>
+                 
+            </div>
+            <div class="todo-input">
+                <form method="post">
+                {%  csrf_token %}
+                <input type="text" id="todoInput" placeholder="Add a new task..." name="task" required>
+                <input type="date" id="todoDate" required name="date">
+                <button class="btn btn-primary" id="addTodoBtn">Add Task <i class="fas fa-plus"></i></button>
+                </form>
+            </div>
+            {% for plan in plannerdata %} 
+            <div class="todo-list" id="todoList">
+                <li class="todo-item">
+                    <div class="todo-content">
+                        <input type="checkbox">
+                        <span class=""> {{plan.task}}</span>
+                    </div>
+                    <div class="todo-meta">
+                        <span>{{plan.date}}</span>
+                        <a href="{% url 'delete_plan' plan.id %}"><i class="fas fa-trash"></i></a>
+                    </div>
+                </li>
+            </div>
+            {% endfor %}
+                
+
+        </div>
+    </section>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Done!</span>
+    </div>
+    <script src="/static/js/base.js"></script>
+    <script>
+        let isDarkTheme = localStorage.getItem('theme') === 'light' ? false : true;   
+         
+    </script>
+    <!-- <script src="/static/js/planner.js"></script> -->
+</body>
+</html>

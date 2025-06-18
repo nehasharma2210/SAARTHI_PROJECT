@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Manager - SAARTHI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/attendance.css">
+    <!-- <link rel="stylesheet" href="/static/css/ expense.css">
+    <link rel="stylesheet" href="/static/css/planner.css"> -->
+</head>
+<body class="dark">
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1>SAARTHI</h1>
+        </div>
+        <div class="header-controls">
+            <button class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                <i id="themeIcon" class="fas fa-moon"></i>
+            </button>
+            <button class="font-size-toggle" id="fontSizeToggle" title="Toggle Font Size">
+                <i class="fas fa-text-height"></i>
+            </button>
+            <a href="{% url 'home' %}"  style=" text-decoration: none !important; color: inherit !important">
+            <button class="btn btn-primary" id="backBtn">    
+                <i class="fas fa-arrow-left"></i> Back
+            </button></a>
+        </div>
+    </header>
+    <!-- Your Subjects Section -->
+    <section class="section" id="subjects">
+        <div class="section-title">
+            <h2>Your Subjects</h2>
+        </div>
+        <!-- Search and Percentage Filter -->
+        <div class="subjects-filter">
+            <div class="filter-field">
+                <form method="get">
+                    <label for="subjectSearch">Search Subjects: </label>
+                    <input type="text" id="subjectSearch" placeholder="Enter subject name..." name="subjectSearch">
+                </form>
+            </div>
+            <div class="filter-field">
+                <form method="get">
+                    <label for="percentageFilter">Max Percentage: </label>
+                    <input type="number" id="percentageFilter" placeholder="e.g., 75" min="0" max="100" class="no-spin" name="serchbyper">
+                </form>
+            </div>
+        </div>
+        <div class="subjects-grid" id="subjectsGrid">
+        {% for n in attendancedata %}
+               <!--for add dynamic data of subjecys-->
+            <div class="subject-card">
+                <div class="deletesubject">
+                    <h3>{{n.sub}}</h3>
+                    <a  href="{% url 'delete' n.id %}" class="deletesub" style=" text-decoration: none;color: var(--text) ;"> <i class="fa-solid fa-xmark"></i></a>
+                </div>
+                <!-- in your template file like index.html -->
+                <p>Total Classes: {{n.tcls}}</p>
+                <p>Present: {{n.pcls}}</p>
+                <p>Absent: {{n.Absentclass}}</p>
+                <p>Percentage:{{n.persent}}</p>
+                <div class="subject-actions">
+                    <div class="action-row">
+                        <!-- <form method="post">
+                        
+                        <input type="hidden" name="current_number" value="{{ current_number }}"> -->
+                          <a href="{% url 'add_present' n.id %}" class="btn btn-primary" data-index="0"  style=" text-decoration: none;color: var(--text) ;">Mark Present</button> 
+                        <!-- </form> -->
+                        <a href="{% url 'add_absent' n.id %}" class="btn btn-primary" data-index="0"  style=" text-decoration: none;color: var(--text) ;">Mark Absent</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Subjects will be populated by JavaScript -->
+       {% endfor %}
+       </div>
+    </section>
+    <!-- Add Subject Button -->
+    <div class="add-button">
+         <a href="{% url 'attendanceadd' %}"  style=" text-decoration: none !important; color: inherit !important">
+        <button class="btn btn-primary" id="addSubjectBtn">Add Subject <i class="fas fa-plus"></i></button></a>
+    </div>
+    <!-- Add Subject Modal -->
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Done!</span>
+    </div>
+    <script src="/static/js/base.js"></script>
+    <script  >let isDarkTheme = localStorage.getItem('theme') === 'light' ? false : true;</script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+/* Root Variables */
+:root {
+    --primary: #00ddeb;
+    --secondary: #ff00ff;
+    --background: #0a0a23;
+    --card-bg: rgba(255, 255, 255, 0.15);
+    --glass: rgba(255, 255, 255, 0.1);
+    --border:rgba(255, 255, 255, 0.2);
+    --text: #ffffff;
+    --text-add: rgba(255, 255, 255, 0.75);
+    --tools-bg:#0a0a23;
+    --shadow: 0 0 15px rgba(0, 221, 235, 0.3);
+    --shadow-hover: 0 0 25px rgba(0, 221, 235, 0.5);
+    --gradient: linear-gradient(135deg, #00ddeb 0%, #ff00ff 100%);
+    --button1:linear-gradient(135deg, #fff 0%, #ff00ff 100%);
+    --button2:linear-gradient(135deg, #ff00ff 0%,  #210eee 100%);
+    
+
+    /* Light theme variables */
+    --primary-light: #007bff;
+    --secondary-light: #ff007f;
+    --background-light: #f4f4f9;
+    --card-bg-light: rgba(182, 124, 124, 0.05);
+    --glass-light: rgba(96, 89, 89, 0.1);
+    --border-light:rgba(0, 0, 0, 0.2);
+    --text-light: #333333;
+    --text-add-light:rgb(255, 255, 255);
+    --shadow-light: 0 0 10px rgba(0, 123, 255, 0.2);
+    --shadow-hover-light: 0 0 20px rgba(0, 123, 255, 0.4);
+    --gradient-light: linear-gradient(135deg, #007bff 0%, #ff007f 100%);
+    --button1-light:linear-gradient(135deg, #fff 0%, #ff007f 100%);
+    --button2-light:linear-gradient(135deg, #ef6faf 0%,  #007bff 100%);
+
+    /* Font size variables */
+    --font-scale-small: 0.85;
+    --font-scale-medium: 1;
+    --font-scale-large: 1.15;
+}
+
+body.light {
+    --primary: var(--primary-light);
+    --secondary: var(--secondary-light);
+    --background: var(--background-light);
+    --card-bg: var(--card-bg-light);
+    --glass: var(--glass-light);
+    --text: var(--text-light);
+    --shadow: var(--shadow-light);
+    --shadow-hover: var(--shadow-hover-light);
+    --gradient: var(--gradient-light);
+    --button1:var(--button1-light);
+    --button2:var(--button2-light);
+}
+
+/* Font size modes */
+body.font-size-medium {
+    font-size: calc(16px * var(--font-scale-medium));
+}
+
+body.font-size-large {
+    font-size: calc(16px * var(--font-scale-large));
+}
+
+body.font-size-small {
+    font-size: calc(16px * var(--font-scale-small));
+}
+
+/* Adjust specific elements for font sizes */
+body.font-size-small .section-title h2 { font-size: 1.6rem; }
+body.font-size-medium .section-title h2 { font-size: 2rem; }
+body.font-size-large .section-title h2 { font-size: 2.4rem; }
+
+body.font-size-small .modal-header h3 { font-size: 1.2rem; }
+body.font-size-medium .modal-header h3 { font-size: 1.5rem; }
+body.font-size-large .modal-header h3 { font-size: 1.8rem; }
+
+/* Existing styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Orbitron', sans-serif;
+}
+
+body {
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+/* for chnaging scrollbar style */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--glass);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 10px;
+}
+
+/* Header */
+header {
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    padding: 1rem 5%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000; /* for higher prefrency  of header */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--glass);
+}
+/* logo disine */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: var(--gradient);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+/* Buttons */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: none;
+    font-size: 1rem;
+    
+}
+
+.btn-primary {
+    background: var(--gradient);
+    color: white;
+    box-shadow: var(--shadow);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+.btn-outline {
+    background: transparent;
+    color: var(--primary);
+    border: 2px solid var(--primary);
+}
+
+.btn-outline:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* Theme and Font Size Toggle Buttons */
+.theme-toggle, .font-size-toggle {
+    background: var(--glass);
+    border: 2px solid var(--primary);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--text);
+    transition: all 0.3s ease;
+}
+/* theme toggole css */
+.theme-toggle:hover, .font-size-toggle:hover {
+    background: var(--primary);
+    color: white;
+}
+/* notification style */
+.notification {
+    position: fixed;
+    top: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100px);
+    background: var(--glass);
+    border: 2px solid var(--primary);
+    color: var(--text);
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 3000;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.notification.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.notification.error {
+    border-color: var(--secondary);
+}

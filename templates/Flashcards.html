@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcards</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/Pomodoro_Timer.css">
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+     <header> 
+        <div class="logo">
+            <h1>SAARTHI</h1>
+        </div>
+        <div class="logo">
+            <h1>Flashcards</h1>
+        </div>
+        <div class="logo">
+            <h1>Pomodoro Timer</h1>
+        </div>
+        <div class="header-controls">
+            <button class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                <i id="themeIcon" class="fas fa-moon"></i>
+            </button>
+            <button class="font-size-toggle" id="fontSizeToggle" title="Toggle Font Size">
+                <i class="fas fa-text-height"></i>
+            </button>
+             <a href="{% url 'home' %}"  style=" text-decoration: none !important; color: inherit !important">
+            <button class="btn btn-primary" id="backBtn">               
+                <i class="fas fa-arrow-left"></i> Back
+            </button></a>
+        </div>
+    </header>
+    <!-- Flashcards Modal -->
+    <div class="modal" id="flashcardsModal">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="flashcard-container">
+                    <div class="flashcard" id="flashcard">
+                        <div class="flashcard-front">
+                            <h3 id="flashcardQuestion">Loading...</h3>
+                            <p>Click to flip</p>
+                        </div>
+                        <div class="flashcard-back">
+                            <h3 id="flashcardAnswer">Loading...</h3>
+                            <p>Answer here</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flashcard-controls">
+                    <button class="btn btn-outline" id="prevCard">Previous</button>
+                    <button class="btn btn-primary" id="nextCard">Next</button>
+                </div>
+                <div style="text-align: center; margin-top: 1rem;">
+                    <button class="btn btn-primary" id="addFlashcardBtn">Add New</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

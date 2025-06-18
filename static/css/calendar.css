@@ -1,0 +1,68 @@
+/* Styles for calendar container */
+.calendar-container {
+    padding: 1.5rem;
+}
+
+/* Calendar header with navigation */
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+/* Calendar grid layout */
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    text-align: center;
+}
+
+.calendar-grid div {
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+/* Day header styling */
+.day-header {
+    font-weight: bold;
+}
+
+/* Day cell styling */
+.day {
+    background: var(--card-bg);
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.day:hover {
+    background: #e0e0e0;
+}
+
+/* Highlight current day */
+.day.today {
+    background: var(--gradient);
+    color: #fff;
+}
+
+/* Event text styling */
+.event {
+    font-size: 0.9rem;
+    color: #ff6b6b;
+    margin-top: 0.5rem;
+}
+
+/* Event input form */
+.event-input {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.event-input input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    flex: 1;
+}

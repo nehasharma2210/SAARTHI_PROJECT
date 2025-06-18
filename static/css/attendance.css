@@ -1,0 +1,274 @@
+.subjects-filter input::placeholder {
+    color: var(--text-add);
+    opacity: 0.5;
+}
+
+body.light .subjects-filter input::placeholder {
+    color: #222222; /* Darker for light theme */
+    opacity: .5; /* Solid color */
+}
+
+.btn-mark{
+    background: inherit;
+    color: var(--text);
+    font-size: small;
+    box-shadow: var(--shadow);
+}
+.section {
+    padding: 6rem 5%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: var(--gradient);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* gap: 1.5rem; */
+    padding: 1rem;
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+.subject-card {
+    background: var(--card-bg);
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 300px;
+    margin: 1rem;
+}
+
+.subject-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: var(--primary);
+}
+
+.subject-card p {
+    color: var(--text);
+    opacity: 0.9;
+    margin: 0.3rem 0;
+    font-size: 0.95rem;
+}
+
+.subject-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: auto;
+}
+
+.action-row {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+}
+
+.subjects-filter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.subjects-filter label {
+    color: var(--text);
+    font-size: 1rem;
+}
+
+.subjects-filter input {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: none;
+    background: var(--glass);
+    color: var(--text-add);
+    font-size: 0.9rem;
+    width: 200px;
+    box-shadow: var(--shadow);
+}
+
+.subjects-filter input:focus {
+    outline: none;
+    box-shadow: var(--shadow-hover);
+}
+
+.subjects-filter input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+} */
+
+.modal.active {
+    display: flex;
+    opacity: 1;
+}
+.modal{
+  display: flex;
+  justify-content: center;   /* horizontal center */
+  align-items: center;       /* vertical center */
+  height: 100vh;             /* full viewport height */
+  background-color:  var(--background); /* or whatever your background is */
+}
+.deletesubject{
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.deletesubject a{
+    background-color: inherit;
+    border:none;
+}
+.modal-content {
+    
+    background: var(--card-bg);
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.modal-header h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    background: var(--gradient);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text);
+    transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+    color: var(--primary);
+}
+
+.modal-body {
+    padding: 0.5rem 0;
+}
+
+.modal-field {
+    margin-bottom: 1rem;
+}
+
+.modal-field label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+.modal-field input {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: none;
+    background: var(--glass);
+    color: var(--text-add);
+}
+
+.modal-field p {
+    font-size: 0.8rem;
+    color:  var(--border);
+    margin-top: 0.2rem;
+}
+
+/* Remove increment/decrement arrows from number input */
+.no-spin::-webkit-inner-spin-button,
+.no-spin::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.no-spin {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.add-button {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 2000;
+}
+
+
+
+.subject-actions .edit-subject:hover,
+.subject-actions .delete-subject:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-hover);
+}
+
+
+@media (max-width: 768px) {
+    header { flex-direction: column; padding: 1rem; }
+    .section { padding: 4rem 1.5rem; }
+    .subjects-grid {
+        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
+    .subject-card {
+        min-height: 320px;
+        padding: 1.2rem;
+    }
+    .modal-content { width: 95%; }
+    .action-row { gap: 0.5rem; }
+    .btn {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.85rem;
+        max-width: 100px;
+    }
+    .subjects-filter {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+}

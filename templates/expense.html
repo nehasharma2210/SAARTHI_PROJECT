@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAARTHI - Expense Manager</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/expense.css">
+</head>
+<body>
+    <!-- Stars Background -->
+    <div class="stars" id="stars"></div>
+
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1>SAARTHI</h1>
+        </div>
+        <div class="header-controls">
+            <button class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                <i id="themeIcon" class="fas fa-moon"></i>
+            </button>
+            <button class="font-size-toggle" id="fontSizeToggle" title="Toggle Font Size">
+                <i class="fas fa-text-height"></i>
+            </button>
+             <a href="{% url 'home' %}"  style=" text-decoration: none !important; color: inherit !important">
+            <button class="btn btn-primary" id="backBtn">               
+                <i class="fas fa-arrow-left"></i> Back
+            </button></a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-container">
+        <!-- Control Panel -->
+         
+        
+            <div class="control-panel">
+                <form method="get">
+                    {% csrf_token %}
+                    <div class="month-selector" >
+                        <select id="monthSelect" name="month" required >
+                            <option value="1">January</option>
+                            <option value="2">February</option>
+                            <option value="3">March</option>
+                            <option value="4">April</option>
+                            <option value="5">May</option>
+                            <option value="6">June</option>
+                            <option value="7">July</option>
+                            <option value="8">August</option>
+                            <option value="9">September</option>
+                            <option value="10">October</option>
+                            <option value="11">November</option>
+                            <option value="12">December</option>
+                        </select>
+                        <button class="search_month" type="submit"> search month <i class="fas fa-plus"></i></button>
+                    </div>
+                </form>
+                    <form method="post">
+                    {% csrf_token %}
+                    <div class="expense-input">
+                        <label for="expenseDesc" required>Description</label>
+                        <input type="text" id="expenseDesc" placeholder="e.g., Food" name="expenseDesc" required>
+                        <label for="expenseAmount">Amount (₹)</label>
+                        <input type="number" id="expenseAmount" min="1" placeholder="Enter amount" name="expenseAmount" required>
+                        <label for="expenseDate">Date</label>
+                        <input type="date" id="expenseDate" name="expenseDate" required>
+                        <button id="addExpenseBtn" class="search_month" type="submit">Add Expense <i class="fas fa-plus"></i></button>
+                    </div>
+                </form>  
+        </div>
+       
+        <!-- Expense Ledger -->
+        <div class="expense-ledger">
+            <h2 style="font-size: 1.5rem; background: var(--gradient); background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem;">Expense Ledger</h2>
+            <!-- <ul class="expense-list" id="expenseList"></ul>
+            <div class="total-expense" id="totalExpense">Total: ₹0</div> -->
+                <!-- add expenses data in dynamic way -->
+            {% for ex in expensedata %} 
+            <li class="expense-item">  
+                <div class="expense-item-content">
+                    <div class="description">{{ex.des}}</div>
+                    <div class="date">{{ex.date}}</div>
+                </div>
+                <div class="amount">₹{{ex.amount}}
+                </div>
+                <!-- <button onclick="deleteExpense(1, '2025-3')"><i class="fas fa-trash"></i></button> -->
+                <a href="{% url 'delete_expense' ex.id %}" style=" text-decoration: none ;" ><i class="fas fa-trash"></i></a>
+                <!-- <button onclick="deleteExpense(1, '2025-3')" ><i class="fas fa-trash"></i></button> -->
+                </li>     {% endfor %}
+             <!-- </li> -->
+             <div class="total-expense" id="totalExpense">Total:{{totalamount}}</div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>SAARTHI - Tera financial dost! 🚀</p>
+    </footer>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Done!</span>
+    </div>
+    <script src="/static/js/base.js"></script>
+    <script>let isDarkTheme = localStorage.getItem('theme') === 'light' ? false : true;</script>
+    <!-- <script src="/static/js/expense.js"></script> -->
+</body>
+</html>

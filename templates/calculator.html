@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/calculator.css">
+    <link rel="stylesheet" href="/static/css/attendace.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1>SAARTHI</h1>
+           
+        </div>
+        <div class="logo"> <h1>Calculator</h1></div>
+        <div class="header-controls">
+            <button class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                <i id="themeIcon" class="fas fa-moon"></i>
+            </button>
+            <button class="font-size-toggle" id="fontSizeToggle" title="Toggle Font Size">
+                <i class="fas fa-text-height"></i>
+            </button>
+            <a href="{% url 'home' %}"  style=" text-decoration: none !important; color: inherit !important">
+            <button class="btn btn-primary" id="backBtn">    
+                <i class="fas fa-arrow-left"></i> Back
+            </button></a>
+        </div>
+    </header>
+    <!-- Calculator Modal -->
+<div class="modal" id="calculatorModal">
+    <div class="modal-content">
+      <div class="modal-body">
+        <input type="text" class="calculator-display" id="calcDisplay" placeholder="Enter expression" />
+        <div class="calculator-buttons">
+          <button class="calc-btn operator1" onclick="appendToCalc('sin(')">sin</button>
+          <button class="calc-btn" onclick="appendToCalc('7')">7</button>
+          <button class="calc-btn" onclick="appendToCalc('8')">8</button>
+          <button class="calc-btn" onclick="appendToCalc('9')">9</button>
+          <button class="calc-btn operator2" onclick="appendToCalc('/')">/</button>
+
+          <button class="calc-btn operator2" onclick="appendToCalc('cos(')">cos</button>
+          <button class="calc-btn" onclick="appendToCalc('4')">4</button>
+          <button class="calc-btn" onclick="appendToCalc('5')">5</button>
+          <button class="calc-btn" onclick="appendToCalc('6')">6</button>
+          <button class="calc-btn operator1" onclick="appendToCalc('*')">×</button>
+
+          <button class="calc-btn operator1" onclick="appendToCalc('tan(')">tan</button>
+          <button class="calc-btn" onclick="appendToCalc('1')">1</button>
+          <button class="calc-btn" onclick="appendToCalc('2')">2</button>
+          <button class="calc-btn" onclick="appendToCalc('3')">3</button>
+          <button class="calc-btn operator2" onclick="appendToCalc('-')">-</button>
+
+          <button class="calc-btn operator2" onclick="appendToCalc('log(')">log</button>
+          <button class="calc-btn" onclick="appendToCalc('0')">0</button>
+          <button class="calc-btn" onclick="appendToCalc('.')">.</button>
+          <button class="calc-btn" onclick="clearCalc()">C</button>
+          <button class="calc-btn operator1" onclick="appendToCalc('+')">+</button>
+          <button class="calc-btn operator1" onclick="appendToCalc('^')">^</button>
+          <button class="calc-btn operator2" onclick="appendToCalc(')')">)</button>
+          <button class="calc-btn equals" onclick="calculate()">=</button>
+          <button class="calc-btn operator1" onclick="backspaceCalc()">del</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    </div>
+    <script src="/static/js/calculator.js"></script>
+    <script src="/static/js/base.js"></script>
+    <script>let isDarkTheme = localStorage.getItem('theme') === 'light' ? false : true;</script>
+</body>
+</html>

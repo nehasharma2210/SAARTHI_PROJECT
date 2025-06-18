@@ -1,0 +1,22 @@
+#pomodoroTimer{
+    color: var(--text-add);
+}
+#pomodoroModal{
+    padding: 6rem 5%;
+}
+#pomodoroLength {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 2px solid var(--primary);  
+    background-color: var(--glass);
+    color:  var(--text);
+    font-size: 1rem;
+    outline: none;
+    margin-top: 0.5rem;
+    transition: 0.3s;
+}
+
+.pomodoroLength :focus {
+    border-color:  var(--secondary);  
+    box-shadow: 0 0 8px var(--gradient);
+}

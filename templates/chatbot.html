@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAARTHI Chatbot - Your Study Dost</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/base.css">
+    <link rel="stylesheet" href="/static/css/chatbot.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <h1>SAARTHI</h1>
+        </div>
+        <div class="header-controls">
+            <button class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                <i id="themeIcon" class="fas fa-moon"></i>
+            </button>
+            <button class="font-size-toggle" id="fontSizeToggle" title="Toggle Font Size">
+                <i class="fas fa-text-height"></i>
+            </button>
+             <a href="{% url 'home' %}"  style=" text-decoration: none !important; color: inherit !important">
+            <button class="btn btn-primary" id="backBtn">                
+                <i class="fas fa-arrow-left"></i> Back
+            </button></a>
+        </div>
+    </header>
+
+    <!-- Chatbot Interface -->
+    <div class="chatbot-container">
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="chatbot-message bot welcome">Hello! I'm SAARTHI's Chatbot. Click a question below to get study help!</div>
+        </div>
+        <div class="chatbot-questions" id="chatbotQuestions">
+            <button class="question-btn" data-question="study tips">How can I improve my study habits?</button>
+            <button class="question-btn" data-question="deadline"> do I manage deadlHowines?</button>
+            <button class="question-btn" data-question="attendance">How should I track attendance?</button>
+            <button class="question-btn" data-question="expenses">How can I manage my expenses?</button>
+            <button class="question-btn" data-question="help">What can you help me with?</button>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span id="notificationText">Done!</span>
+    </div>
+    <script src="/static/js/base.js"></script>
+    <script src="/static/js/chatbot.js"></script>
+</body>
+</html>
