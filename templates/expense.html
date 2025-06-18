@@ -73,10 +73,7 @@
        
         <!-- Expense Ledger -->
         <div class="expense-ledger">
-            <h2 style="font-size: 1.5rem; background: var(--gradient); background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem;">Expense Ledger</h2>
-            <!-- <ul class="expense-list" id="expenseList"></ul>
-            <div class="total-expense" id="totalExpense">Total: ₹0</div> -->
-                <!-- add expenses data in dynamic way -->
+            <h2 style="font-size: 1.5rem; background: var(--gradient); background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem;">Expense Leader</h2>
             {% for ex in expensedata %} 
             <li class="expense-item">  
                 <div class="expense-item-content">
@@ -85,9 +82,8 @@
                 </div>
                 <div class="amount">₹{{ex.amount}}
                 </div>
-                <!-- <button onclick="deleteExpense(1, '2025-3')"><i class="fas fa-trash"></i></button> -->
+    
                 <a href="{% url 'delete_expense' ex.id %}" style=" text-decoration: none ;" ><i class="fas fa-trash"></i></a>
-                <!-- <button onclick="deleteExpense(1, '2025-3')" ><i class="fas fa-trash"></i></button> -->
                 </li>     {% endfor %}
              <!-- </li> -->
              <div class="total-expense" id="totalExpense">Total:{{totalamount}}</div>
@@ -106,6 +102,5 @@
     </div>
     <script src="/static/js/base.js"></script>
     <script>let isDarkTheme = localStorage.getItem('theme') === 'light' ? false : true;</script>
-    <!-- <script src="/static/js/expense.js"></script> -->
 </body>
 </html>
