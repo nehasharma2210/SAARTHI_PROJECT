@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAARTHI - Expense Manager</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="/static/css/base.css">
+ 
+{%  extends "base.html" %}
+{% block  content %}
+    <title>SAARTHI - Expense Tracker</title>
     <link rel="stylesheet" href="/static/css/expense.css">
 </head>
 <body>
@@ -95,12 +91,5 @@
         <p>SAARTHI - Tera financial dost! 🚀</p>
     </footer>
 
-    <!-- Notification -->
-    <div class="notification" id="notification">
-        <i class="fas fa-check-circle"></i>
-        <span id="notificationText">Done!</span>
-    </div>
-    <script src="/static/js/base.js"></script>
-    <script>let isDarkTheme = localStorage.getItem('theme') === 'light' ? false : true;</script>
-</body>
-</html>
+    <script src="/static/js/expense.js"></script>
+    {% endblock %} 
